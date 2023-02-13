@@ -19,6 +19,8 @@ export const UserContext = createContext({
   setUserInfo: () => {},
   login: null,
   setLogin: () => {},
+  editHotel: null,
+  setEditHotel: () => {},
 });
 
 export const UserProvider = ({ children }) => {
@@ -31,6 +33,7 @@ export const UserProvider = ({ children }) => {
   const [selectedBookingInfo, setSelectedBookingInfo] = useState({});
   const [userInfo, setUserInfo] = useState({});
   const [login, setLogin] = useState(false);
+  const [editHotel, setEditHotel] = useState([]);
   const value = {
     currentUser,
     setCurrentUser,
@@ -50,6 +53,8 @@ export const UserProvider = ({ children }) => {
     setUserInfo,
     login,
     setLogin,
+    editHotel,
+    setEditHotel,
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

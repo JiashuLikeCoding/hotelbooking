@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { Box } from "@mui/system";
 import { UserContext } from "../UserContext/UserContext";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import {
   Card,
   CardMedia,
@@ -12,7 +13,8 @@ import {
   Button,
 } from "@mui/material";
 const HotelList = () => {
-  const { hotels, setHotels } = useContext(UserContext);
+  const { hotels, setHotels, editHotel, setEditHotel } =
+    useContext(UserContext);
 
   useEffect(() => {}, [hotels]);
   return (
@@ -40,7 +42,17 @@ const HotelList = () => {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="large">Edit</Button>
+              <Link to="editHotal">
+                <Button
+                  size="large"
+                  onClick={() => {
+                    setEditHotel([eachHotelKey, hotels[eachHotelKey]]);
+                  }}
+                >
+                  Edit
+                </Button>
+              </Link>
+
               <Button
                 size="large"
                 color="error"

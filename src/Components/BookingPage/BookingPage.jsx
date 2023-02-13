@@ -1,5 +1,5 @@
 import "./BookingPage.scss";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Box } from "@mui/system";
 import {
   Typography,
@@ -15,6 +15,38 @@ import { Link } from "react-router-dom";
 const BookingPage = () => {
   const { selectedBookingInfo, userInfo, setUserInfo } =
     useContext(UserContext);
+  const [isValid, setIsValid] = useState(false);
+  useEffect(() => {
+    setUserInfo({});
+  }, []);
+
+  useEffect(() => {
+    console.log(
+      userInfo?.firstName !== undefined &&
+        userInfo?.lastName !== undefined &&
+        userInfo?.phone !== undefined &&
+        userInfo?.email !== undefined &&
+        userInfo?.bookingDate !== undefined &&
+        userInfo?.cardNumber !== undefined &&
+        userInfo?.svc !== undefined &&
+        userInfo?.expiredDay !== undefined
+    );
+    if (
+      userInfo?.firstName !== undefined &&
+      userInfo?.lastName !== undefined &&
+      userInfo?.phone !== undefined &&
+      userInfo?.email !== undefined &&
+      userInfo?.bookingDate !== undefined &&
+      userInfo?.cardNumber !== undefined &&
+      userInfo?.svc !== undefined &&
+      userInfo?.expiredDay !== undefined
+    ) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  }, [userInfo]);
+
   return (
     <Box className="bookingPageContainer">
       <Typography variant="h3" sx={{ textAlign: "center" }}>
@@ -121,7 +153,24 @@ const BookingPage = () => {
           </Card>
         </div>
       </Box>
-      <Link to="orderComplete">
+      {isValid ? (
+        <Link to="orderComplete">
+          <Box
+            alignItems={"center"}
+            width="100%"
+            display={"flex"}
+            justifyContent="center"
+          >
+            <Button
+              sx={{ marginTop: "40px", marginBottom: "100px", width: "40%" }}
+              size="large"
+              variant="contained"
+            >
+              Book
+            </Button>
+          </Box>
+        </Link>
+      ) : (
         <Box
           alignItems={"center"}
           width="100%"
@@ -132,11 +181,12 @@ const BookingPage = () => {
             sx={{ marginTop: "40px", marginBottom: "100px", width: "40%" }}
             size="large"
             variant="contained"
+            disabled={true}
           >
             Book
           </Button>
         </Box>
-      </Link>
+      )}
     </Box>
   );
 };

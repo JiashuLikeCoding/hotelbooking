@@ -28,10 +28,16 @@ const ThanksPage = () => {
           <Typography variant="body1" color="text.secondary">
             Date:{userInfo.bookingDate}
           </Typography>
+          <Typography variant="body1" color="text.secondary">
+            Email:{userInfo.email}
+          </Typography>
+          <Typography variant="body1" color="text.secondary">
+            Phone:{userInfo.phone}
+          </Typography>
         </CardContent>
       </Card>
       <Typography variant="h5" sx={{ marginTop: 5 }}>
-        we have send an email of you booking information to {userInfo.email}!
+        Thanks for booking with us!
       </Typography>
     </Box>
   );
