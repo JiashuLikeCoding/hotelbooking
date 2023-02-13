@@ -3,6 +3,7 @@ import React from "react";
 import InputSection from "../InputSection/InputSection";
 import { UserContext } from "../UserContext/UserContext";
 import { useContext } from "react";
+import { AMENITIES } from "../../utils/constant";
 import {
   TextField,
   Stack,
@@ -21,13 +22,7 @@ const AddHotelForm = () => {
     switchButton,
     setSwitchButton,
   } = useContext(UserContext);
-  const amenities = [
-    "Free parking",
-    "Free WiFi internet access",
-    "Gym or fitness center",
-    "Mobile Check-In",
-    "Free breakfast",
-  ];
+
   return (
     <Box className="addHotelFormContainer">
       <TextField
@@ -83,7 +78,7 @@ const AddHotelForm = () => {
         sx={{ marginTop: "40px" }}
         multiple
         id="checkboxes"
-        options={amenities}
+        options={AMENITIES}
         disableCloseOnSelect
         getOptionLabel={(option) => option}
         renderOption={(props, option, { selected }) => (

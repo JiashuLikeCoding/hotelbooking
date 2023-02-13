@@ -13,10 +13,12 @@ import {
 } from "@mui/material";
 const HotelList = () => {
   const { hotels, setHotels } = useContext(UserContext);
+  console.log(hotels);
+  console.log(Object.values(hotels));
   return (
     <Box className="hotelListContainer">
       {hotels &&
-        hotels.map((eachHotel, index) => (
+        Object.values(hotels).map((eachHotel, index) => (
           <Card key={index} sx={{ width: "100%", marginBottom: "40px" }}>
             <CardMedia sx={{ height: 300 }} image={eachHotel.image} />
             <CardContent>
