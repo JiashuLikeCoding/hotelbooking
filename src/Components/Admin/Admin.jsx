@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import { Stack } from "@mui/system";
 import { useContext } from "react";
 import { UserContext } from "../UserContext/UserContext";
+import HotelList from "../HotelList/HotelList";
 const Admin = () => {
   const { switchButton, setSwitchButton } = useContext(UserContext);
   return (
@@ -40,7 +41,7 @@ const Admin = () => {
           Adding Hotel
         </Button>
       </Stack>
-      {!switchButton && <AddHotelForm />}
+      {switchButton ? <HotelList /> : <AddHotelForm />}
     </div>
   );
 };

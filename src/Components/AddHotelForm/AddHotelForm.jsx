@@ -13,8 +13,14 @@ import {
 } from "@mui/material";
 
 const AddHotelForm = () => {
-  const { currentHotelInfo, setCurrentHotelInfo, hotels, setHotels } =
-    useContext(UserContext);
+  const {
+    currentHotelInfo,
+    setCurrentHotelInfo,
+    hotels,
+    setHotels,
+    switchButton,
+    setSwitchButton,
+  } = useContext(UserContext);
   const amenities = [
     "Free parking",
     "Free WiFi internet access",
@@ -33,7 +39,6 @@ const AddHotelForm = () => {
             ...currentHotelInfo,
             name: event.target.value,
           });
-          console.log(currentHotelInfo);
         }}
       />
       <TextField
@@ -47,7 +52,6 @@ const AddHotelForm = () => {
             ...currentHotelInfo,
             price: event.target.value,
           });
-          console.log(currentHotelInfo);
         }}
       />
       <TextField
@@ -60,7 +64,6 @@ const AddHotelForm = () => {
             ...currentHotelInfo,
             location: event.target.value,
           });
-          console.log(currentHotelInfo);
         }}
       />
 
@@ -74,7 +77,6 @@ const AddHotelForm = () => {
             ...currentHotelInfo,
             image: event.target.value,
           });
-          console.log(currentHotelInfo);
         }}
       />
       <Autocomplete
@@ -103,12 +105,12 @@ const AddHotelForm = () => {
         }}
       />
       <Button
-        sx={{ marginTop: "40px" }}
+        sx={{ marginTop: "40px", marginBottom: "100px" }}
         size="large"
         variant="contained"
         onClick={() => {
           setHotels([...hotels, currentHotelInfo]);
-          console.log(hotels);
+          setSwitchButton(!switchButton);
         }}
       >
         Add Hotel

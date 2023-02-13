@@ -2,7 +2,6 @@ import React from "react";
 import "./Navigation.scss";
 import SearchBar from "../SearchBar/SearchBar";
 import ButtonsGroup from "../ButtonsGroup/ButtonsGroup";
-
 const Navigation = () => {
   return (
     <div className="container">
