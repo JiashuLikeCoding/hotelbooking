@@ -1,0 +1,27 @@
+.container {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  align-items: center;
+  border-bottom: 2px solid black;
+
+  .icon {
+    margin-left: 20px;
+
+    height: 100%;
+    display: flex;
+    align-items: center;
+    img {
+      width: 90px;
+      height: 90px;
+    }
+    span {
+      font-size: 40px;
+      font-weight: 900;
+    }
+  }
+}

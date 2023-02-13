@@ -1,0 +1,15 @@
+.searchBarContainer {
+  align-items: center;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+
+  input {
+    width: 80%;
+    height: 70%;
+    text-align: left;
+    padding-left: 20px;
+    font-size: 15px;
+  }
+}
