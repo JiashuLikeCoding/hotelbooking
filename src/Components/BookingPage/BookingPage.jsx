@@ -132,7 +132,6 @@ const BookingPage = () => {
             sx={{ marginTop: "40px", marginBottom: "100px", width: "40%" }}
             size="large"
             variant="contained"
-            onClick={() => {}}
           >
             Book
           </Button>

@@ -23,6 +23,9 @@ const AddHotelForm = () => {
     setSwitchButton,
   } = useContext(UserContext);
 
+  useEffect(() => {
+    setCurrentHotelInfo({});
+  }, []);
   return (
     <Box className="addHotelFormContainer">
       <TextField
@@ -105,8 +108,16 @@ const AddHotelForm = () => {
         variant="contained"
         onClick={() => {
           let key = Object.keys(hotels).length + 1;
-          setHotels({ ...hotels, key: currentHotelInfo });
-          setSwitchButton(!switchButton);
+          if (
+            currentHotelInfo?.name !== undefined &&
+            currentHotelInfo?.price !== undefined &&
+            currentHotelInfo?.image !== undefined &&
+            currentHotelInfo?.location !== undefined &&
+            currentHotelInfo?.amenities !== undefined
+          ) {
+            setHotels({ ...hotels, key: currentHotelInfo });
+            setSwitchButton(!switchButton);
+          }
         }}
       >
         Add Hotel
