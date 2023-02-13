@@ -15,9 +15,16 @@ import SearchBar from "../SearchBar/SearchBar";
 import { UserContext } from "../UserContext/UserContext";
 import { useContext } from "react";
 import { PRICE_RANGE } from "../../utils/constant";
+import { Link } from "react-router-dom";
 const Home = () => {
-  const { hotels, searchArgs, filterOptions, setFilterOptions } =
-    useContext(UserContext);
+  const {
+    hotels,
+    searchArgs,
+    filterOptions,
+    setFilterOptions,
+    selectedBookingInfo,
+    setSelectedBookingInfo,
+  } = useContext(UserContext);
   const valueOfHotels = Object.values(hotels);
   const [filteredHotels, setFilteredHotel] = useState(valueOfHotels);
 
@@ -125,7 +132,16 @@ const Home = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="large">Book</Button>
+                <Link to="./bookingPage">
+                  <Button
+                    size="large"
+                    onClick={() => {
+                      setSelectedBookingInfo(eachHotel);
+                    }}
+                  >
+                    Book
+                  </Button>
+                </Link>
               </CardActions>
             </Card>
           ))}

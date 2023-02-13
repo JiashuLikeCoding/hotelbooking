@@ -1,0 +1,35 @@
+.bookingPageContainer {
+  min-height: 80vh;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  margin: 150px 200px;
+  border: 1px solid black;
+  padding: 100px 100px;
+
+  .bookingField {
+    display: flex;
+
+    justify-content: space-between;
+    & > div {
+      margin-top: 50px;
+      height: 100%;
+      width: 50%;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .leftBox {
+      border-right: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      padding: 50px 0;
+
+      & > * {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

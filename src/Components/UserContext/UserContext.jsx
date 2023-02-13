@@ -13,6 +13,12 @@ export const UserContext = createContext({
   setSearchArgs: () => null,
   filterOptions: null,
   setFilterOptions: () => {},
+  selectedBookingInfo: null,
+  setSelectedBookingInfo: () => {},
+  userInfo: null,
+  setUserInfo: () => {},
+  login: null,
+  setLogin: () => {},
 });
 
 export const UserProvider = ({ children }) => {
@@ -22,6 +28,9 @@ export const UserProvider = ({ children }) => {
   const [hotels, setHotels] = useState(MOCKUP_DATA);
   const [searchArgs, setSearchArgs] = useState("");
   const [filterOptions, setFilterOptions] = useState({});
+  const [selectedBookingInfo, setSelectedBookingInfo] = useState({});
+  const [userInfo, setUserInfo] = useState({});
+  const [login, setLogin] = useState(false);
   const value = {
     currentUser,
     setCurrentUser,
@@ -35,6 +44,12 @@ export const UserProvider = ({ children }) => {
     setSearchArgs,
     filterOptions,
     setFilterOptions,
+    selectedBookingInfo,
+    setSelectedBookingInfo,
+    userInfo,
+    setUserInfo,
+    login,
+    setLogin,
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
