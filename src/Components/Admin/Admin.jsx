@@ -3,7 +3,10 @@ import React from "react";
 import AddHotelForm from "../AddHotelForm/AddHotelForm";
 import { Button } from "@mui/material";
 import { Stack } from "@mui/system";
+import { useContext } from "react";
+import { UserContext } from "../UserContext/UserContext";
 const Admin = () => {
+  const { switchButton, setSwitchButton } = useContext(UserContext);
   return (
     <div className="adminContainer">
       <h1 className="title">Manage Hotels</h1>
@@ -16,14 +19,28 @@ const Admin = () => {
           marginBottom: "50px",
         }}
       >
-        <Button size="large" sx={{ width: "100%" }} variant="outlined">
+        <Button
+          size="large"
+          sx={{ width: "100%" }}
+          variant={switchButton ? "contained" : "outlined"}
+          onClick={() => {
+            setSwitchButton(!switchButton);
+          }}
+        >
           Hotel List
         </Button>
-        <Button size="large" sx={{ width: "100%" }} variant="contained">
+        <Button
+          size="large"
+          sx={{ width: "100%" }}
+          variant={switchButton ? "outlined" : "contained"}
+          onClick={() => {
+            setSwitchButton(!switchButton);
+          }}
+        >
           Adding Hotel
         </Button>
       </Stack>
-      <AddHotelForm />
+      {!switchButton && <AddHotelForm />}
     </div>
   );
 };
