@@ -10,7 +10,7 @@ const SearchBar = () => {
   return (
     <div className="searchBarContainer">
       <TextField
-        sx={{ width: 500 }}
+        sx={{ width: 400 }}
         label="Search By Hotel Name or Location"
         variant="outlined"
         onChange={(event) => {

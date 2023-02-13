@@ -1,11 +1,3 @@
-export const PRICE_RANGE = [
-  "$0 - 500",
-  "$500 - 1000",
-  "$1000 - 1500",
-  "$1500 - 2000",
-  "$2000 above",
-];
-
 export const AMENITIES = [
   "Free parking",
   "Free WiFi internet access",

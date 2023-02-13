@@ -26,20 +26,7 @@ const Home = () => {
   //       eachHotel.name.toLowerCase().includes(searchArgs.trim().toLowerCase()) ||
   //       eachHotel.location.toLowerCase().includes(searchArgs.trim().toLowerCase())
   //   );
-  useEffect(() => {
-    let newList = filteredHotels.filter(
-      (eachHotel) =>
-        eachHotel.name
-          .toLowerCase()
-          .includes(searchArgs.trim().toLowerCase()) ||
-        eachHotel.location
-          .toLowerCase()
-          .includes(searchArgs.trim().toLowerCase())
-    );
-    searchArgs.length !== 0
-      ? setFilteredHotel(newList)
-      : setFilteredHotel(valueOfHotels);
-  }, [searchArgs, filterOptions]);
+
   useEffect(() => {
     let tempHotel = valueOfHotels;
     let tempOption = {};
@@ -61,8 +48,30 @@ const Home = () => {
     }
 
     Object.keys(tempOption).length !== 0
-      ? setFilteredHotel(tempHotel)
-      : setFilteredHotel(valueOfHotels);
+      ? setFilteredHotel(() =>
+          tempHotel.filter(
+            (eachHotel) =>
+              eachHotel.name
+                .toLowerCase()
+                .includes(searchArgs.trim().toLowerCase()) ||
+              eachHotel.location
+                .toLowerCase()
+                .includes(searchArgs.trim().toLowerCase())
+          )
+        )
+      : setFilteredHotel(() =>
+          valueOfHotels.filter(
+            (eachHotel) =>
+              eachHotel.name
+                .toLowerCase()
+                .includes(searchArgs.trim().toLowerCase()) ||
+              eachHotel.location
+                .toLowerCase()
+                .includes(searchArgs.trim().toLowerCase())
+          )
+        );
+
+    // if(Object.keys(tempOption).length === 0 && searchArgs)
   }, [filterOptions, searchArgs]);
 
   return (
@@ -72,7 +81,7 @@ const Home = () => {
         <Autocomplete
           options={valueOfHotels ? valueOfHotels : []}
           getOptionLabel={(option) => option?.name}
-          sx={{ width: 300 }}
+          sx={{ width: 400 }}
           renderInput={(params) => (
             <TextField {...params} label="Filter By Hotel Name" />
           )}
@@ -80,25 +89,11 @@ const Home = () => {
             setFilterOptions({ ...filterOptions, name: value?.name });
           }}
         />
-        <Autocomplete
-          options={PRICE_RANGE ? PRICE_RANGE : []}
-          getOptionLabel={(option) => option}
-          sx={{ width: 200 }}
-          renderInput={(params) => (
-            <TextField {...params} label="Filter By Price Range" />
-          )}
-          onChange={(event, value) => {
-            setFilterOptions({
-              ...filterOptions,
-              price: value?.price,
-            });
-          }}
-        />
 
         <Autocomplete
           options={valueOfHotels ? valueOfHotels : []}
           getOptionLabel={(option) => option?.location}
-          sx={{ width: 200 }}
+          sx={{ width: 400 }}
           renderInput={(params) => (
             <TextField {...params} label="Filter By Location" />
           )}
