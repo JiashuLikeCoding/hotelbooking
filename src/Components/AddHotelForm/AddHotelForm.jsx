@@ -1,5 +1,5 @@
 import "./AddHotelForm.scss";
-import React from "react";
+import React, { useEffect } from "react";
 import InputSection from "../InputSection/InputSection";
 import { UserContext } from "../UserContext/UserContext";
 import { useContext } from "react";
@@ -104,7 +104,8 @@ const AddHotelForm = () => {
         size="large"
         variant="contained"
         onClick={() => {
-          setHotels([...hotels, currentHotelInfo]);
+          let key = Object.keys(hotels).length + 1;
+          setHotels({ ...hotels, key: currentHotelInfo });
           setSwitchButton(!switchButton);
         }}
       >
